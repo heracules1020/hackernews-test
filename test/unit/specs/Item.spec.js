@@ -1,5 +1,4 @@
 import { mount } from '@vue/test-utils'
-// import Vue from 'vue'
 import Item from '@/components/Item.vue'
 
 const testPropData = {
@@ -28,7 +27,7 @@ describe('Item.vue', () => {
     expect(wrapper.find('h2').text()).toEqual(testPropData.story.title)
   })
 
-  it('Computed should return the correct data', () => {
+  it('Computed should return the correct date', () => {
     expect(Item.computed.formattedDate.call(testPropData)).toEqual('November 19, 2022')
   })
 })
