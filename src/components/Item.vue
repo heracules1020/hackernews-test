@@ -16,22 +16,19 @@
 </template>
 
 <script>
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
+]
+
 export default {
   name: 'Item',
   props: [
     'story'
   ],
-  data () {
-    return {
-      monthNames: ['January', 'February', 'March', 'April', 'May', 'June',
-        'July', 'August', 'September', 'October', 'November', 'December'
-      ]
-    }
-  },
   computed: {
     formattedDate () {
       const date = new Date(this.story.time * 1000)
-      return `${this.monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
+      return `${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
     }
   }
 }

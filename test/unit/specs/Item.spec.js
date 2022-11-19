@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils'
+// import Vue from 'vue'
 import Item from '@/components/Item.vue'
 
 const testPropData = {
@@ -14,11 +15,20 @@ const testPropData = {
   }
 }
 
+const wrapper = mount(Item, {
+  propsData: testPropData
+})
+
 describe('Item.vue', () => {
   it('Should render title', () => {
-    const wrapper = mount(Item, {
-      propsData: testPropData
-    })
-    expect(wrapper.contains('h2')).toBe(true)
+    expect(wrapper.find('h2').exists()).toBe(true)
+  })
+
+  it('Should render exact title', () => {
+    expect(wrapper.find('h2').text()).toEqual(testPropData.story.title)
+  })
+
+  it('Computed should return the correct data', () => {
+    expect(Item.computed.formattedDate.call(testPropData)).toEqual('November 19, 2022')
   })
 })
